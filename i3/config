@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window title. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:JetBrainsMono NF 10
+font pango:JetBrainsMono Nerd Font 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -21,18 +21,20 @@ font pango:JetBrainsMono NF 10
 exec_always --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id setxkbmap -option caps:super
 
-exec --no-startup-id thunar --daemon
+#exec --no-startup-id thunar --daemon
 
 exec --no-startup-id blueman-applet
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
-#exec --no-startup-id feh --bg-fill /usr/share/backgrounds/ubuntu-budgie.png
+exec --no-startup-id feh --bg-fill /usr/share/backgrounds/fedora.png
 
 #exec --no-startup-id setxkbmap -layout us,ara -option grp:ctrl_shift_toggle
 #exec --no-startup-id dunst
-exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
+#exec --no-startup-id /usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd
+exec --no-startup-id exec picom -b 
+exec --no-startup-id ~/.config/battery-warner/warn.sh
 
 #arabic
 #exec_always --no-startup-id setxkbmap -layout us,ara -option grp:alt_shift_toggle
@@ -75,14 +77,15 @@ bindsym XF86AudioMicMute exec --no-startup-id sh -c "pactl set-source-mute @DEFA
 floating_modifier $mod
 
 #screenshot
-bindsym Print exec --no-startup-id xfce4-screenshooter 
-
+bindsym Print exec --no-startup-id xfce4-screenshooter -s ~/Pictures -r
+bindsym $mod+F9 exec --no-startup-id gromit-mpx 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -94,7 +97,7 @@ bindsym $mod+Delete kill
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # browser shortcut
-bindsym $mod+F1 exec brave-browser
+bindsym $mod+F1 exec thorium-browser
 
 # change focus
 bindsym $mod+j focus left
@@ -220,21 +223,29 @@ mode "resize" {
 }
 
 # Volume up
-bindsym $mod+F4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+# bindsym $mod+F4 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $mod+F4 exec --no-startup-id bash -c "~/.config/i3/volume.sh up"
 
 # Volume down
-bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+#bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod+F3 exec --no-startup-id bash -c "~/.config/i3/volume.sh down"
 
 # Mute/unmute
-bindsym $mod+F5 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+#bindsym $mod+F5 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym $mod+F5 exec --no-startup-id bash -c "~/.config/i3/volume.sh mute"
 
 
 bindsym $mod+r mode "resize"
 
+# copy
+bindsym $mod+y exec --no-startup-id sh -c "~/.config/i3/dmenu_cliphist.sh add"
+#bindsym $mod+p exec --no-startup-id sh -c "sleep 0.8 && ~/.config/i3/dmenu_cliphist.sh paste"
+bindsym $mod+p exec --no-startup-id sh -c "~/.config/i3/dmenu_cliphist.sh sel"
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+    status_command i3status
 	colors {
     background #1e1e2e
     statusline #f8f8f2
@@ -250,7 +261,10 @@ bar {
 #}
 
 # Window colors
-client.focused          #282a36 #44475a #ffffff #bd93f9 #282a36
-client.unfocused        #282a36 #282a36 #6272a4 #44475a #282a36
-# i3bar colors
+#client.focused          #282a36 #44475a #ffffff #bd93f9 #282a36
+#client.unfocused        #282a36 #282a36 #6272a4 #44475a #282a36
+client.focused          #ba55d3 #ba55d3 #ffffff #ba55d3 #ba55d3
 
+# i3bar colors
+for_window [class=".*"] border pixel 2
+focus_follows_mouse no
