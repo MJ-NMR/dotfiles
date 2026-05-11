@@ -3,6 +3,11 @@ use = "boydaihungst/gvfs"
 rev = "3abc0a2"
 hash = "eed89e75671723c8f9390a2862af0e4e"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:mount"
+rev = "4ffa48f"
+hash = "77e20b071404f97c09d3f9afdb9482e0"
+
 [[flavor.deps]]
 use = "yazi-rs/flavors:dracula"
 rev = "0670801"

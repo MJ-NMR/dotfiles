@@ -13,7 +13,7 @@ exec --no-startup-id feh --bg-fill ~/media/pictures/backgrounds/clown.jpeg
 exec --no-startup-id $scripts/battery-warner.sh
 # exec --no-startup-id xset s 600 500
 exec --no-startup-id xss-lock -n /usr/share/doc/xss-lock/dim-screen.sh -- i3lock -n -i ~/media/pictures/backgrounds/And-the-world-moved-on.png
-exec --no-startup-id alacritty --class=scratchpad-term
+exec --no-startup-id kitty --app-id scratchpad-term
 
 set $refresh_i3status killall -SIGUSR1 i3status
 
