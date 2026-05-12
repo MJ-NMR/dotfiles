@@ -32,7 +32,7 @@ bindsym $mod+e layout toggle split
 bindsym Shift+space floating toggle
 bindsym $mod+Shift+n exec $scripts/notes.sh
 bindsym $mod+n exec alacritty --class float-term -e wifitui
-bindsym $mod+space exec  rofi -show drun
+bindsym $mod+space exec rofi -show drun -theme ~/.config/rofi/dracula.rasi -matching fuzzy
 bindsym $mod+g exec  rofi -show run
 bindsym $mod+a focus parent
 bindsym $mod+d focus child
