@@ -85,7 +85,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				group = group,
 				buffer = bufnr,
 				callback = function()
-					vim.lsp.buf.format({ bufnr = bufnr })
+					if vim.bo.filetype == "c" or vim.bo.filetype == "cpp" then
+						local view = vim.fn.winsaveview()
+						vim.cmd("silent %!clang-format")
+						vim.fn.winrestview(view)
+					else
+						vim.lsp.buf.format({ bufnr = bufnr })
+					end
 				end,
 			})
 		end

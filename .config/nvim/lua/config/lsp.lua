@@ -1,4 +1,4 @@
-vim.lsp.enable({ "lua_ls", "ts_ls", "bashls", "gopls", "clangd", "pyright", "sqls" })
+vim.lsp.enable({ "lua_ls", "ts_ls", "bashls", "gopls", "clangd", "pyright", "sqls", "arduino_language_server" })
 
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 --local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -6,6 +6,19 @@ vim.lsp.config('*', {
 	capabilities = capabilities,
 })
 
+vim.lsp.config('clangd', {
+	cmd = {
+		"clangd",
+		"--fallback-style='{BasedOnStyle:  WebKit, TabWidth: 4, IndentWidth: 4, UseTab: Always}'"
+	}
+})
+
+-- vim.lsp.config('clangd', {
+-- 	cmd = {
+-- 		"clangd",
+-- 		"--fallback-style=webkit"
+-- 	}
+-- })
 
 vim.lsp.config('lua_ls', {
 	on_init = function(client)
