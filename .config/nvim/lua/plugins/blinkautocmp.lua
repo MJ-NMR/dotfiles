@@ -2,11 +2,17 @@ return {
 	'saghen/blink.cmp',
 	-- optional: provides snippets for the snippet source
 	dependencies = {
-		{ "rafamadriz/friendly-snippets", },
-		{ "L3MON4D3/LuaSnip",             version = 'v2.*', },
+		"rafamadriz/friendly-snippets",
+		"saghen/blink.lib",
+		{ "L3MON4D3/LuaSnip", version = 'v2.*', },
 	},
+	build = function()
+		-- build the fuzzy matcher, wait up to 60 seconds
+		-- you can use `gb` in `:Lazy` to rebuild the plugin as needed
+		require('blink.cmp').build():wait(60000)
+	end,
 
-	version = '1.*',
+	-- version = '1.*',
 	---@module 'blink.cmp'
 	---@diagnostic disable-next-line: undefined-doc-name
 	---@type blink.cmp.Config
@@ -93,7 +99,8 @@ return {
 			preset = 'luasnip', -- preset = 'default'
 		},
 
-		fuzzy = { implementation = "prefer_rust_with_warning" }
+		-- fuzzy = { implementation = "prefer_rust_with_warning" }
+		fuzzy = { implementation = "rust" }
 	},
 	opts_extend = { "sources.default" },
 	config = function(_, opts)

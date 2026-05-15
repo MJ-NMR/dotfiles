@@ -31,7 +31,7 @@ return {
 		keymaps = {
 			show_help = "<f1>",
 			change_working_directory = "<A-o>",
-			cycle_open_buffers = "<tab>",
+			cycle_open_buffers = "g.",
 			send_to_quickfix_list = "<c-q>",
 		},
 	},
