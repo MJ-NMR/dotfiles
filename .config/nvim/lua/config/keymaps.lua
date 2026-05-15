@@ -1,4 +1,5 @@
 -- Remap movement keys
+vim.keymap.set("i", "<Space>", "<Space>")
 vim.keymap.set('n', 'q', '<Nop>')
 vim.keymap.set({ 'n', 'v', 'o' }, '^', '0', { noremap = true, desc = "Move to beginning of line" })
 vim.keymap.set({ 'n', 'v', 'o' }, '0', '^', { noremap = true, desc = "Move to first non-blank character" })

@@ -4,7 +4,7 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("oil").setup({
-				default_file_explorer = true,
+				default_file_explorer = false,
 				view_options = {
 					show_hidden = true,
 				},
@@ -16,7 +16,7 @@ return {
 				},
 
 			})
-			vim.keymap.set("n", "<leader>o", "<CMD>Oil<CR>", { desc = "Open parent directory in Oil" })
+			-- vim.keymap.set("n", "<leader>o", "<CMD>Oil<CR>", { desc = "Open parent directory in Oil" })
 		end
 	},
 	{ "a-h/templ", lazy = true },
