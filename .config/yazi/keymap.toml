@@ -77,10 +77,6 @@ keymap = [
 	{ on = "D",         run = "remove --permanently",        desc = "Permanently delete selected files" },
 	{ on = "a",         run = "create",                      desc = "Create a file (ends with / for directories)" },
 	{ on = "r",         run = "rename --cursor=before_ext",  desc = "Rename selected file(s)" },
-	{ on = [":", "q"], run  = "quit", desc = "Quit" },
-	{ on = [":", "Q"], run = "quit --no-cwd-file", desc = "Quit without cwd-file" },
-	{ on = [":", "r"],         run = "shell --block --interactive", desc = "Run command (block)" },
-	{ on = [":", "R"],         run = "shell --interactive",         desc = "Run command (Async)" },
 	{ on = ".",         run = "hidden toggle",               desc = "Toggle the visibility of hidden files" },
 	{ on = "s",         run = "search --via=fd",             desc = "Search files by name via fd" },
 	{ on = "S",         run = "search --via=rg",             desc = "Search files by content via ripgrep" },
@@ -127,12 +123,13 @@ keymap = [
 	{ on = [ ",", "r" ], run = "sort random --reverse=no",                       desc = "Sort randomly" },
 
 	# Goto
-	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go home" },
-	{ on = [ "g", "c" ],       run = "cd ~/.config",     desc = "Go ~/.config" },
-	{ on = [ "g", "d" ],       run = "cd ~/downloads",   desc = "Go ~/downloads" },
-	{ on = [ "g", "d" ],       run = "cd ~/projects",   desc = "Go ~/projects" },
-	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Jump interactively" },
-	{ on = [ "g", "f" ],       run = "follow",           desc = "Follow hovered symlink" },
+	{ on = [ "g", "h" ],       run = "cd ~",                desc = "Go home" },
+	{ on = [ "g", "c" ],       run = "cd ~/.config",        desc = "Go ~/.config" },
+	{ on = [ "g", "d" ],       run = "cd ~/downloads",      desc = "Go ~/downloads" },
+	{ on = [ "g", "p" ],       run = "cd ~/projects",       desc = "Go ~/projects" },
+	{ on = [ "g", "l" ],       run = "cd ~/projects/repos", desc = "Go repos" },
+	{ on = [ "g", "<Space>" ], run = "cd --interactive",    desc = "Jump interactively" },
+	{ on = [ "g", "f" ],       run = "follow",              desc = "Follow hovered symlink" },
 
 	# Tabs
 	{ on = "t", run = "tab_create --current", desc = "Create a new tab with CWD" },
@@ -159,6 +156,14 @@ keymap = [
 	# Help
 	{ on = "~",    run = "help", desc = "Open help" },
 	{ on = "<F1>", run = "help", desc = "Open help" },
+
+	# Commands
+	{ on = [":", "q"], run  = "quit",                             desc = "Quit" },
+	{ on = [":", "Q"], run  = "quit --no-cwd-file",               desc = "Quit without cwd-file" },
+	{ on = [":", "r"], run  = "shell --block --interactive",      desc = "Run command (block)" },
+	{ on = [":", "R"], run  = "shell --interactive",              desc = "Run command (Async)" },
+	{ on = [":", "s"], run  = 'shell --block "kitty @ launch --type=window --cwd=\"$PWD\""', desc = "Open shell here"},
+	{ on = [":", "h"], run  = "help",                             desc = "Open help" },
 ]
 
 prepend_keymap = [

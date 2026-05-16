@@ -1,3 +1,13 @@
+[mgr]
+border_symbol = "│"
+border_style = { fg = "#89b4fa" }
+border_style_unfocused = { fg = "#585b70" }
+
+tab_active = { fg = "#1e1e2e", bg = "#89b4fa" }
+tab_inactive = { fg = "#6c7086" }
+
+tab_active_unfocused = { fg = "#6c7086", bg = "#313244" }
+
 [flavor]
 dark = "dracula"
 

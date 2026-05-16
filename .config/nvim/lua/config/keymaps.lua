@@ -1,5 +1,5 @@
 -- Remap movement keys
-vim.keymap.set("i", "<Space>", "<Space>")
+vim.keymap.set('i', '<Space>', '<Space>')
 vim.keymap.set('n', 'q', '<Nop>')
 vim.keymap.set({ 'n', 'v', 'o' }, '^', '0', { noremap = true, desc = "Move to beginning of line" })
 vim.keymap.set({ 'n', 'v', 'o' }, '0', '^', { noremap = true, desc = "Move to first non-blank character" })
@@ -7,6 +7,10 @@ vim.keymap.set({ 'i', 'c' }, '<A-h>', '<left>', { noremap = true, desc = "Move c
 vim.keymap.set({ 'i', 'c' }, '<A-l>', '<right>', { noremap = true, desc = "Move cursor right" })
 vim.keymap.set({ 'i', 'c' }, '<A-k>', '<up>', { noremap = true, desc = "Move cursor up" })
 vim.keymap.set({ 'i', 'c' }, '<A-j>', '<down>', { noremap = true, desc = "Move cursor down" })
+vim.keymap.set('n', '<C-Upk', ':resize +2<CR>')
+vim.keymap.set('n', '<C-Down>', ':resize -2<CR>')
+vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>')
+vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>')
 vim.keymap.set('n', 'H', '5zh')
 vim.keymap.set('n', 'L', '5zl')
 vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, desc = "Exit insert mode" })
@@ -112,3 +116,25 @@ vim.api.nvim_create_autocmd("FileType", {
 -- quickfix
 vim.keymap.set('n', '<leader>co', ':copen<CR>', { desc = 'Open quickfix list' })
 vim.keymap.set('n', '<leader>cc', ':cclose<CR>', { desc = 'Close quickfix list' })
+
+-- resize
+local function enter_resize_mode()
+	print("RESIZE MODE")
+
+	vim.keymap.set("n", "h", "<cmd>vertical resize -2<CR>", { buffer = true })
+	vim.keymap.set("n", "l", "<cmd>vertical resize +2<CR>", { buffer = true })
+	vim.keymap.set("n", "j", "<cmd>resize -2<CR>", { buffer = true })
+	vim.keymap.set("n", "k", "<cmd>resize +2<CR>", { buffer = true })
+
+	vim.keymap.set("n", "q", function()
+		pcall(vim.keymap.del, "n", "h", { buffer = true })
+		pcall(vim.keymap.del, "n", "j", { buffer = true })
+		pcall(vim.keymap.del, "n", "k", { buffer = true })
+		pcall(vim.keymap.del, "n", "l", { buffer = true })
+		pcall(vim.keymap.del, "n", "q", { buffer = true })
+
+		print("EXIT RESIZE MODE")
+	end, { buffer = true })
+end
+
+vim.keymap.set("n", "<A-r>", enter_resize_mode)
