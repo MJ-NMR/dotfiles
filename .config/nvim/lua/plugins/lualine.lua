@@ -1,17 +1,23 @@
 return {
 	'nvim-lualine/lualine.nvim',
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
-	config = function ()
+	config = function()
 		require("lualine").setup({
 			options = {
 				theme = "dracula-nvim",
-				section_separators = { left = '', right = ''},
+				section_separators = { left = '', right = '' },
+				disabled_filetypes = {
+					statusline = {
+						"terminal",
+						"toggleterm",
+					},
+				},
 			},
 			sections = {
 				lualine_c = { { 'filename', path = 1, } },
-				lualine_b = {'diff', 'diagnostics'},
-				lualine_x = {'lsp_status'},
-				lualine_y = {'filetype'},
+				lualine_b = { 'diff', 'diagnostics' },
+				lualine_x = { 'lsp_status' },
+				lualine_y = { 'filetype' },
 				lualine_z = {},
 			}
 		})

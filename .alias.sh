@@ -1,3 +1,4 @@
+alias :q="exit"
 alias zconf='nvim ~/.zshrc'
 alias van='nvim +Man!'
 alias iconf='nvim ~/.config/i3/config'
