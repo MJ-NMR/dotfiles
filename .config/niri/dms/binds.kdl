@@ -1,0 +1,7 @@
+binds {
+    Print hotkey-overlay-title="Screenshot: Interactive" { spawn "dms" "ipc" "call" "niri" "screenshot"; }
+    Super+N hotkey-overlay-title="Notifications: Toggle" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
+    Super+P hotkey-overlay-title="Clipboard: Toggle" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
+    Super+S hotkey-overlay-title="Settings: Focus or Toggle" { spawn "dms" "ipc" "call" "settings" "focusOrToggle"; }
+    Super+C hotkey-overlay-title="copy with notify" { spawn "sh" "-c" "/home/zaater/projects/repos/scripts/copy_with_notify.sh"; }
+}
