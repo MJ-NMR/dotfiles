@@ -55,3 +55,5 @@ for_window [class="float-term"] floating enable
 for_window [class="full-term"] fullscreen enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="scratchpad-term"] move scratchpad
+
+# vim: ft=i3config

@@ -170,8 +170,8 @@ binds {
     Mod+Space  hotkey-overlay-title="Launcher" { spawn "rofi" "-show" "drun" "-matching" "fuzzy"; }
 
     // Apps.
-    Mod+Return           hotkey-overlay-title="Terminal" { spawn "kitty"; }
-    Mod+Y                hotkey-overlay-title="yazi" { spawn "kitty" "yazi"; }
+    Mod+Return           hotkey-overlay-title="Terminal" { spawn "foot"; }
+    Mod+Y                hotkey-overlay-title="yazi" { spawn "foot" "yazi"; }
 
     // Display scaling / zoom.
     Mod+Ctrl+Shift+Equal hotkey-overlay-title="Increase focused monitor scale" { spawn "output-scale" "+"; }

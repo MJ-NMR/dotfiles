@@ -73,17 +73,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
 
 		vim.keymap.set("n", "<leader>.", vim.lsp.buf.format,
-			{ disc = "format", noremap = true, silent = true, buffer = bufnr })
+			{ desc = "format", noremap = true, silent = true, buffer = bufnr })
 		vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float,
-			{ disc = "diagnostic", noremap = true, silent = true, buffer = bufnr })
+			{ desc = "diagnostic", noremap = true, silent = true, buffer = bufnr })
 		vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = 'rounded' }) end,
-			{ disc = "hover info", noremap = true, silent = true, buffer = bufnr })
+			{ desc = "hover info", noremap = true, silent = true, buffer = bufnr })
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition,
-			{ disc = "definition", noremap = true, silent = true, buffer = bufnr })
+			{ desc = "definition", noremap = true, silent = true, buffer = bufnr })
 		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename,
-			{ disc = "rename", noremap = true, silent = true, buffer = bufnr })
+			{ desc = "rename", noremap = true, silent = true, buffer = bufnr })
 		vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action,
-			{ disc = "code action", noremap = true, silent = true, buffer = bufnr })
+			{ desc = "code action", noremap = true, silent = true, buffer = bufnr })
 
 		if client and client:supports_method("textDocument/formatting") then
 			local group = vim.api.nvim_create_augroup("LspFormat" .. bufnr, { clear = true })

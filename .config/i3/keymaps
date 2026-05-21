@@ -71,3 +71,4 @@ mode "resize" {
 	bindsym q mode "default"
 }
 
+# vim: ft=i3config
