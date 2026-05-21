@@ -16,7 +16,8 @@
 	tool = vimdiff
 	conflictStyle = zdiff3
 [core]
-	pager = delta
+	; pager = delta
+	pager = diffnav
 [interactive]
 	diffFilter = delta --color-only
 [delta]
