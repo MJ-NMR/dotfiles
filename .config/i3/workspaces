@@ -42,9 +42,9 @@ bindsym $mod+Shift+o move container to workspace number $ws10
 assign [class="Thorium-browser" instance="thorium-browser"] $ws2
 assign [class="Google-chrome" instance="google-chrome"] $ws2
 assign [class="firefox"] $ws2
-
-
-for_window [class=".*"] border pixel 2
+# for_window [class=".*"] border pixel 2
+default_border pixel 2
+hide_edge_borders smart
 focus_follows_mouse no
 for_window [class=".*notifyd.*"] border none
 for_window [class="Dunst"] border none
