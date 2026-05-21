@@ -29,29 +29,28 @@ vim.api.nvim_create_autocmd("FileType", {
 	command = "wincmd L",
 })
 
--- vim.api.nvim_create_autocmd("TermOpen", {
+
+-- vim.api.nvim_create_autocmd({ 'TermEnter' }, {
 -- 	callback = function()
--- 		vim.bo.filetype = "terminal"
--- 	end,
+-- 		vim.o.laststatus = 0
+-- 	end
 -- })
 --
--- vim.api.nvim_create_autocmd("TermOpen", {
--- 	pattern = "*",
+-- vim.api.nvim_create_autocmd({ 'TermLeave' }, {
 -- 	callback = function()
--- 		vim.opt_local.statusline = " "
--- 	end,
--- })
---
--- -- Optional: restore when leaving terminal buffer
--- vim.api.nvim_create_autocmd("BufLeave", {
--- 	pattern = "term://*",
--- 	callback = function()
--- 		vim.opt_local.statusline = nil -- revert to global (lualine takes over)
--- 	end,
+-- 		vim.o.laststatus = 3
+-- 	end
 -- })
 
-vim.api.nvim_create_autocmd("TermOpen", {
+vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter' }, {
 	callback = function()
-		vim.bo.filetype = "terminal"
-	end,
+		vim.schedule(function()
+			if vim.bo.buftype == 'terminal' then
+				vim.o.laststatus = 0
+			else
+				vim.o.laststatus = 3
+			end
+		end)
+	end
 })
+

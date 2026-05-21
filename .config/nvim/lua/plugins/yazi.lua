@@ -30,7 +30,7 @@ return {
 		open_for_directories = true,
 		keymaps = {
 			show_help = "<f1>",
-			change_working_directory = "<A-o>",
+			change_working_directory = "c.",
 			cycle_open_buffers = "g.",
 			send_to_quickfix_list = "<c-q>",
 		},

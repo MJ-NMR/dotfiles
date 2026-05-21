@@ -7,12 +7,8 @@ vim.keymap.set({ 'i', 'c' }, '<A-h>', '<left>', { noremap = true, desc = "Move c
 vim.keymap.set({ 'i', 'c' }, '<A-l>', '<right>', { noremap = true, desc = "Move cursor right" })
 vim.keymap.set({ 'i', 'c' }, '<A-k>', '<up>', { noremap = true, desc = "Move cursor up" })
 vim.keymap.set({ 'i', 'c' }, '<A-j>', '<down>', { noremap = true, desc = "Move cursor down" })
-vim.keymap.set('n', '<C-Upk', ':resize +2<CR>')
-vim.keymap.set('n', '<C-Down>', ':resize -2<CR>')
-vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>')
-vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>')
-vim.keymap.set('n', 'H', '5zh')
-vim.keymap.set('n', 'L', '5zl')
+vim.keymap.set('n', 'H', '5zh', { desc = "scroll right" })
+vim.keymap.set('n', 'L', '5zl', { desc = "scroll left" })
 vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, desc = "Exit insert mode" })
 
 local opts = { noremap = true, silent = true }
@@ -35,8 +31,8 @@ vim.keymap.set('n', '<leader>Q', '<cmd>bd!<CR>', { desc = "Force close current b
 vim.keymap.set('n', '<A-v>', '<C-v>', opts)
 
 -- theprimeagen
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "move down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "move up" })
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
@@ -74,15 +70,20 @@ end, { desc = 'Yank to clipboard history' })
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local bufnr = args.buf
-		local lopts = { noremap = true, silent = true, buffer = bufnr }
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
 
-		vim.keymap.set("n", "<leader>.", vim.lsp.buf.format, lopts)
-		vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, lopts)
-		vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = 'rounded' }) end, lopts)
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, lopts)
-		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, lopts)
-		vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, lopts)
+		vim.keymap.set("n", "<leader>.", vim.lsp.buf.format,
+			{ disc = "format", noremap = true, silent = true, buffer = bufnr })
+		vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float,
+			{ disc = "diagnostic", noremap = true, silent = true, buffer = bufnr })
+		vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = 'rounded' }) end,
+			{ disc = "hover info", noremap = true, silent = true, buffer = bufnr })
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition,
+			{ disc = "definition", noremap = true, silent = true, buffer = bufnr })
+		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename,
+			{ disc = "rename", noremap = true, silent = true, buffer = bufnr })
+		vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action,
+			{ disc = "code action", noremap = true, silent = true, buffer = bufnr })
 
 		if client and client:supports_method("textDocument/formatting") then
 			local group = vim.api.nvim_create_augroup("LspFormat" .. bufnr, { clear = true })
@@ -121,10 +122,10 @@ vim.keymap.set('n', '<leader>cc', ':cclose<CR>', { desc = 'Close quickfix list' 
 local function enter_resize_mode()
 	print("RESIZE MODE")
 
-	vim.keymap.set("n", "h", "<cmd>vertical resize -2<CR>", { buffer = true })
-	vim.keymap.set("n", "l", "<cmd>vertical resize +2<CR>", { buffer = true })
-	vim.keymap.set("n", "j", "<cmd>resize -2<CR>", { buffer = true })
-	vim.keymap.set("n", "k", "<cmd>resize +2<CR>", { buffer = true })
+	vim.keymap.set("n", "h", "<cmd>vertical resize -2<CR>", { buffer = true, desc = "window v size -" })
+	vim.keymap.set("n", "l", "<cmd>vertical resize +2<CR>", { buffer = true, desc = "window v size +" })
+	vim.keymap.set("n", "j", "<cmd>resize -2<CR>", { buffer = true, desc = "window h size -" })
+	vim.keymap.set("n", "k", "<cmd>resize +2<CR>", { buffer = true, desc = "window h size +" })
 
 	vim.keymap.set("n", "q", function()
 		pcall(vim.keymap.del, "n", "h", { buffer = true })

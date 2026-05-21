@@ -16,7 +16,7 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
 fi
 
 if test -z "$WIFITUI_THEME"; then
-	source ~/.xprofile
+	source ~/.profile
 fi
 
 source ~/.config/zsh/funcs.zsh
@@ -28,4 +28,4 @@ export STARSHIP_CONFIG=/home/zaater/.config/starship/starship.toml
 source ~/.alias.sh
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-# eval "$(fzf --zsh)"
+eval "$(fzf --zsh)"

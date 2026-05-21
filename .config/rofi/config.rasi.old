@@ -1,0 +1,127 @@
+/*Dracula theme based on the Purple official rofi theme*/
+
+configuration {
+    show-icons:      true;
+    display-drun:    "Launcher ";
+    disable-history: false;
+}
+
+* {
+    font: "Fredoka Condensed, Medium Condensed 14";
+    foreground: #f8f8f2;
+	background-color: rgba(40, 42, 56, 0.5); 
+	clear: rgba(0, 0, 0, 0); 
+
+}
+
+#window {
+	fullscreen: true;
+    background-color: @background-color;
+    border:           0;
+    border-radius:    6;
+    padding:          200;
+}
+
+#mainbox {
+    background-color: @clear;
+    border:  0;
+    padding: 0;
+}
+#message {
+    border:       0px;
+    padding:      1px;
+}
+#textbox {
+    text-color: @foreground;
+    background-color: @clear;
+}
+#listview {
+	lines: 5;
+    fixed-height: 0;
+    border:       0px;
+    spacing:      2px ;
+    scrollbar:    false;
+    padding:      2px 0px 0px ;
+	background-color: @clear;
+}
+#element {
+    background-color: @clear;
+    border:  0;
+    padding: 10px ;
+}
+
+#element.normal.normal {
+    background-color: @clear;
+    text-color:       @foreground;
+}
+
+#element.normal.urgent {
+    background-color: @clear;
+    text-color:       @urgent-foreground;
+}
+
+#element.normal.active {
+    background-color: @clear;
+    text-color:       @foreground;
+}
+
+#element.selected.normal {
+    background-color: @clear;
+    text-color:       #ba55d3;
+}
+
+#element.alternate.normal {
+    background-color: @clear;
+    text-color:       @foreground;
+}
+#scrollbar {
+    border:       0;
+    background-color: @clear;
+    padding:      0;
+}
+#sidebar {
+    background-color: @clear;
+    border:       2px dash 0px 0px ;
+    border-color: @separatorcolor;
+}
+#button.selected {
+    background-color: @clear;
+    text-color:       @foreground;
+}
+#inputbar {
+    spacing:    0;
+    text-color: @foreground;
+    padding:    1px ;
+    background-color: @clear;
+}
+#case-indicator {
+    background-color: @clear;
+    spacing:    0;
+    text-color: @foreground;
+}
+#entry {
+    background-color: @clear;
+    spacing:    0;
+    text-color: @foreground;
+}
+#prompt {
+    background-color: @clear;
+    spacing:    0;
+    text-color: @foreground;
+}
+#inputbar {
+    background-color: @clear;
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+#textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+    //margin:     0px 0.3em 0em 0em ;
+    text-color: @foreground;
+    background-color: @clear;
+}
+element-text, element-icon {
+    background-color: @clear;
+    text-color: inherit;
+}
+
