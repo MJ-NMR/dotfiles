@@ -78,7 +78,7 @@ return {
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Find File" })
 			vim.keymap.set("n", "<leader>F", builtin.live_grep, { desc = "Live Grep" })
-			vim.keymap.set("n", "<leader>g", builtin.lsp_document_symbols, { desc = "List Types" })
+			vim.keymap.set("n", "<leader>s", builtin.lsp_document_symbols, { desc = "List Symbols" })
 			vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "List Buffers" })
 			-- Make <Space> work normally in insert mode
 		end,

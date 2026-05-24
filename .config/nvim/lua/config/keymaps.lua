@@ -1,6 +1,6 @@
 -- Remap movement keys
 vim.keymap.set('i', '<Space>', '<Space>')
-vim.keymap.set('n', 'q', '<Nop>')
+-- vim.keymap.set('n', 'q', '<Nop>')
 vim.keymap.set({ 'n', 'v', 'o' }, '^', '0', { noremap = true, desc = "Move to beginning of line" })
 vim.keymap.set({ 'n', 'v', 'o' }, '0', '^', { noremap = true, desc = "Move to first non-blank character" })
 vim.keymap.set({ 'i', 'c' }, '<A-h>', '<left>', { noremap = true, desc = "Move cursor left" })
@@ -13,7 +13,7 @@ vim.keymap.set('i', 'jj', '<Esc>', { noremap = true, desc = "Exit insert mode" }
 
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set('i', '<Del>', '<Esc>', { noremap = true, desc = "Escape insert mode using delete" })
+vim.keymap.set('i', '<Del>', '<Esc>', { noremap = true, desc = "Escape insert mode using delete" });
 vim.keymap.set('n', '<A-m>', '<C-d>zz', { noremap = true, desc = "Scroll down and center" })
 vim.keymap.set('n', '<A-u>', '<C-u>zz', { noremap = true, desc = "Scroll up and center" })
 vim.keymap.set('n', '<A-h>', '<C-w>h', { noremap = true, silent = true, desc = "move to left window" })

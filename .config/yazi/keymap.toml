@@ -162,7 +162,7 @@ keymap = [
 	{ on = [":", "Q"], run  = "quit --no-cwd-file",               desc = "Quit without cwd-file" },
 	{ on = [":", "r"], run  = "shell --block --interactive",      desc = "Run command (block)" },
 	{ on = [":", "R"], run  = "shell --interactive",              desc = "Run command (Async)" },
-	{ on = [":", "s"], run  = "shell --block 'kitty @ launch --type=window --cwd=\"$PWD\" nvim -c \"term\" -c \"startinsert\"'", desc = "Open shell here"},
+	{ on = [":", "s"], run  = "shell --block \"nvim -c 'term' -c 'startinsert'\"", desc = "Open shell here"},
 	{ on = [":", "h"], run  = "help",                             desc = "Open help" },
 ]
 

@@ -21,3 +21,4 @@ alias shell='exec $SHELL'
 alias open='xdg-open'
 alias img='nsxiv'
 alias mic='audiosource'
+tirm="sed -z 's/^[[:space:]]*//;s/[[:space:]]*$//'"
