@@ -1,14 +1,14 @@
-vim.api.nvim_create_autocmd({ "InsertEnter" }, {
-	callback = function()
-		vim.opt.relativenumber = false
-	end,
-})
-
-vim.api.nvim_create_autocmd({ "InsertLeave" }, {
-	callback = function()
-		vim.opt.relativenumber = true
-	end,
-})
+-- vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+-- 	callback = function()
+-- 		vim.opt.relativenumber = false
+-- 	end,
+-- })
+--
+-- vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+-- 	callback = function()
+-- 		vim.opt.relativenumber = true
+-- 	end,
+-- })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
@@ -30,18 +30,6 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 
--- vim.api.nvim_create_autocmd({ 'TermEnter' }, {
--- 	callback = function()
--- 		vim.o.laststatus = 0
--- 	end
--- })
---
--- vim.api.nvim_create_autocmd({ 'TermLeave' }, {
--- 	callback = function()
--- 		vim.o.laststatus = 3
--- 	end
--- })
-
 vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter' }, {
 	callback = function()
 		vim.schedule(function()
@@ -53,4 +41,3 @@ vim.api.nvim_create_autocmd({ 'WinEnter', 'BufEnter' }, {
 		end)
 	end
 })
-
