@@ -1,0 +1,11 @@
+[Unit]
+Description=Low battery notifier
+
+[Service]
+Type=oneshot
+Environment="DISPLAY=:0"
+Environment="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus"
+Environment="PULSE_SERVER=unix:/run/user/1000/pulse/native"
+ExecStart=%h/projects/scripts/battery-warner.sh
+
+# vim: ft=confini
