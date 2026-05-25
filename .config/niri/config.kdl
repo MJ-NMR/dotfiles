@@ -75,8 +75,8 @@ layout {
 
     tab-indicator {
         width 4
-        gap 0
-        length total-proportion=1.0
+        gap 5
+        length total-proportion=0.8
         // position "top"
         place-within-column
     }
@@ -167,14 +167,14 @@ binds {
     Mod+O repeat=false hotkey-overlay-title="Toggle overview (4-finger swipe)" { toggle-overview; }
 
 	// tools
-    Mod+C hotkey-overlay-title="Copy with notify" { spawn "bash" "-c" "/home/zaater/projects/repos/scripts/cliphist.sh copy"; }
-    Mod+P hotkey-overlay-title="Select from the clipboard" { spawn "/home/zaater/projects/repos/scripts/cliphist.sh" "sel"; }
-    Mod+B hotkey-overlay-title="Select from the clipboard" { spawn "/home/zaater/projects/repos/scripts/scr"; }
+    Mod+C hotkey-overlay-title="Copy with notify" { spawn "bash" "-c" "/home/zaater/projects/scripts/cliphist.sh copy"; }
+    Mod+P hotkey-overlay-title="Select from the clipboard" { spawn "/home/zaater/projects/scripts/cliphist.sh" "sel"; }
+    Mod+B hotkey-overlay-title="Select from the clipboard" { spawn "/home/zaater/projects/scripts/scr"; }
     Print hotkey-overlay-title="Screenshot: Interactive" { spawn "flameshot" "gui"; }
-	Mod+N hotkey-overlay-title="Notifications manager" { spawn "/home/zaater/projects/repos/scripts/rofi-dunst-manager.sh"; }
+	Mod+N hotkey-overlay-title="Notifications manager" { spawn "/home/zaater/projects/scripts/rofi-dunst-manager.sh"; }
 
     // System.
-    XF86PowerOff hotkey-overlay-title="Power Menu: Toggle" { spawn "~/projects/repos/scripts/power-menu.sh"; }
+    XF86PowerOff hotkey-overlay-title="Power Menu: Toggle" { spawn "~/projects/scripts/power-menu.sh"; }
     Mod+Alt+L        hotkey-overlay-title="Lock screen" { spawn "swaylock"; }
     Mod+Shift+Alt+L  hotkey-overlay-title="Power off monitors" { power-off-monitors; }
     Mod+Ctrl+Shift+Q hotkey-overlay-title="Exit niri session" { quit; }

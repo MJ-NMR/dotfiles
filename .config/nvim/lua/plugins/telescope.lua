@@ -37,7 +37,7 @@ return {
 				pickers = {
 					live_grep = {
 						initial_mode = "insert",
-						theme = "get_ivy",
+						theme = "dropdown",
 					},
 					find_files = {
 						initial_mode = "insert",

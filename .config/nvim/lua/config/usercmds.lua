@@ -125,3 +125,61 @@ end, {
 	bang = true,
 	complete = complete_client,
 })
+
+-- In your init.lua or a plugin file
+vim.api.nvim_create_user_command("Gshow", function(opts)
+	local offset = opts.args ~= "" and opts.args or "1"
+
+	if not offset:match("^%d+$") then
+		vim.notify("Gshow: argument must be a non-negative integer", vim.log.levels.ERROR)
+		return
+	end
+
+	local bufpath = vim.api.nvim_buf_get_name(0)
+	if bufpath == "" then
+		vim.notify("Gshow: buffer has no file path", vim.log.levels.ERROR)
+		return
+	end
+
+	local ft = vim.bo.filetype -- capture BEFORE enew
+
+	local git_root = vim.fn.systemlist(
+		"git -C " .. vim.fn.shellescape(vim.fn.fnamemodify(bufpath, ":h")) .. " rev-parse --show-toplevel"
+	)[1]
+	if vim.v.shell_error ~= 0 or not git_root then
+		vim.notify("Gshow: not inside a git repository", vim.log.levels.ERROR)
+		return
+	end
+
+	local rel_path = bufpath:sub(#git_root + 2)
+	local ref = tonumber(offset) == 0 and "HEAD" or ("HEAD~" .. offset)
+	local git_cmd = string.format(
+		"git -C %s show %s:%s",
+		vim.fn.shellescape(git_root),
+		ref,
+		vim.fn.shellescape(rel_path)
+	)
+
+	vim.cmd("enew")
+	local new_buf = vim.api.nvim_get_current_buf()
+
+	local lines = vim.fn.systemlist(git_cmd)
+	if vim.v.shell_error ~= 0 then
+		vim.notify("Gshow: " .. table.concat(lines, "\n"), vim.log.levels.ERROR)
+		vim.cmd("bdelete")
+		return
+	end
+
+	vim.api.nvim_buf_set_lines(new_buf, 0, -1, false, lines)
+
+	vim.api.nvim_set_option_value("buftype", "nofile", { buf = new_buf })
+	vim.api.nvim_set_option_value("bufhidden", "wipe", { buf = new_buf })
+	vim.api.nvim_set_option_value("swapfile", false, { buf = new_buf })
+	vim.api.nvim_set_option_value("modifiable", false, { buf = new_buf })
+	vim.api.nvim_set_option_value("filetype", ft, { buf = new_buf })
+
+	vim.api.nvim_buf_set_name(new_buf, string.format("git://%s/%s", ref, rel_path))
+end, {
+	nargs = "?",
+	desc = "Open a past git version of the current file. Usage: :Gshow [N]",
+})

@@ -44,3 +44,25 @@ function y() {
 	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+
+function zf() {
+  local dir
+  dir=$(fd -t d -t l --hidden  \
+          --exclude '.git' \
+          --exclude '.cache' \
+          --exclude '.npm' \
+          --exclude '.cargo' \
+          --exclude '.rustup' \
+          --exclude '.venv' \
+          --exclude '.DS_Store' \
+    | fzf +m \
+          --height 60% \
+          --layout reverse \
+          --info inline \
+          --border none \
+          --prompt '> ' \
+          --color 'hl:green,hl+:green,pointer:green,prompt:green,info:yellow' \
+          --preview 'eza --icons=always --color=always {} 2>/dev/null' \
+          --preview-window 'bottom:4:wrap') \
+  && cd "$dir"
+}
