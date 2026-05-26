@@ -71,7 +71,31 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local bufnr = args.buf
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		vim.keymap.set("n", "grr", function()
+			vim.lsp.buf.references(nil, {
+				on_list = function(list)
+					vim.fn.setqflist({}, " ", list --[[@as vim.fn.setqflist.what]])
 
+					-- find the item that matches current position
+					local cursor = vim.api.nvim_win_get_cursor(0)
+					local lnum = cursor[1]
+
+					---@type vim.quickfix.entry[]
+					local items = vim.fn.getqflist()
+					local idx = 1
+					for i, item in ipairs(items) do
+						if item.bufnr == bufnr and item.lnum == lnum then
+							idx = i
+							break
+						end
+					end
+
+					-- jump to that index so ]q / [q go forward/back from there
+					vim.fn.setqflist({}, "a", { idx = idx })
+					print("(" .. idx .. " of " .. #items .. ")")
+				end,
+			})
+		end)
 		vim.keymap.set("n", "<leader>.", vim.lsp.buf.format,
 			{ desc = "format", noremap = true, silent = true, buffer = bufnr })
 		vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float,
@@ -82,8 +106,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			{ desc = "definition", noremap = true, silent = true, buffer = bufnr })
 		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename,
 			{ desc = "rename", noremap = true, silent = true, buffer = bufnr })
-		vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action,
-			{ desc = "code action", noremap = true, silent = true, buffer = bufnr })
 
 		if client and client:supports_method("textDocument/formatting") then
 			local group = vim.api.nvim_create_augroup("LspFormat" .. bufnr, { clear = true })

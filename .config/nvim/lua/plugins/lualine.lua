@@ -2,6 +2,11 @@ return {
 	'nvim-lualine/lualine.nvim',
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
 	config = function()
+		-- local function ref_indicator()
+		-- 	local qf = vim.fn.getqflist({ title = 0, idx = 0, size = 0 })
+		-- 	if qf.title ~= "References" or qf.size == 0 then return "" end
+		-- 	return " [" .. qf.idx .. "/" .. qf.size .. "]"
+		-- end
 		require("lualine").setup({
 			options = {
 				theme = "dracula-nvim",
