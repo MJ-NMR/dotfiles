@@ -7,6 +7,7 @@
 
 spawn-at-startup "swayidle" "-w"
 spawn-at-startup "waybar"
+spawn-at-startup "~/.config/waybar/columns-watcher.sh"
 spawn-at-startup "dunst"
 spawn-at-startup "swaybg" "-m" "fill" "-i" "/usr/share/backgrounds/clown.jpeg"
 
@@ -57,6 +58,10 @@ screenshot-path null
 hotkey-overlay {
     // Avoid auto-showing the important hotkeys menu.
     skip-at-startup
+}
+
+overview {
+    zoom 0.25
 }
 
 gestures {
@@ -215,8 +220,8 @@ binds {
     Mod+Shift+C      hotkey-overlay-title="Center column" { center-column; }
     Mod+Ctrl+C hotkey-overlay-title="Center all visible columns" { center-visible-columns; }
 
-    Shift+Space      hotkey-overlay-title="Toggle floating window" { toggle-window-floating; }
-    Mod+Shift+Space  hotkey-overlay-title="Switch focus between floating and tiling"{ switch-focus-between-floating-and-tiling; }
+    Mod+Shift+Space      hotkey-overlay-title="Toggle floating window" { toggle-window-floating; }
+    Mod+D                hotkey-overlay-title="Switch focus between floating and tiling"{ switch-focus-between-floating-and-tiling; }
 
     Mod+T hotkey-overlay-title="Toggle tabbed column" { toggle-column-tabbed-display; }
 

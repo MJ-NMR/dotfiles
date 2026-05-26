@@ -1,0 +1,52 @@
+* {
+    border: none;
+    border-radius: 10px;
+    font-family: JetBrainsMono NF Bold;
+	font-weight: bold;
+    font-size: 12px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+#backlight,
+#pulseaudio,
+#power-profiles-daemon,
+#workspaces,
+#window,
+#clock,
+#network,
+#bluetooth,
+#cpu,
+#memory,
+#battery,
+#tray {
+    background: rgba(30, 30, 40, 0.85);
+    margin: 0 0px;
+    padding: 0 12px;
+}
+
+/* #workspaces { */
+/*     padding: 4 12px; */
+/* } */
+
+#workspaces button {
+    padding: 0 6px;
+    min-height: 0;
+    border-radius: 11px;
+}
+
+#workspaces button.active {
+    background: #b4a1ff;
+    color: black;
+}
+
