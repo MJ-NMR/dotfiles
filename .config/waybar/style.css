@@ -1,5 +1,5 @@
 * {
-    border: none;
+    /* border: 10px; */
     border-radius: 10px;
     font-family: JetBrainsMono NF Bold;
 	font-weight: bold;
@@ -30,9 +30,11 @@ window#waybar {
 #memory,
 #battery,
 #tray {
-    background: rgba(30, 30, 40, 0.85);
-    margin: 0 0px;
-    padding: 0 12px;
+	background: rgba(30, 30, 40, 0.85);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	padding: 0 0;
+	margin: 0 0px;
+	padding: 0 12px;
 }
 
 /* #workspaces { */
@@ -40,13 +42,22 @@ window#waybar {
 /* } */
 
 #workspaces button {
-    padding: 0 6px;
-    min-height: 0;
-    border-radius: 11px;
+	padding: 0 6px;
+	min-height: 0;
+	border-radius: 11px;
 }
 
 #workspaces button.active {
-    background: #b4a1ff;
-    color: black;
+	background: #b4a1ff;
+	color: black;
+}
+#mpris {
+	color: #cdd6f4;
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	border-radius: 8px;
+	padding: 0 10px;
 }
 
+#mpris.paused {
+	color: #6c7086;
+}

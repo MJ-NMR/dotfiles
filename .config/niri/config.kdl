@@ -6,10 +6,13 @@
 // ----------------------------------------------------------------------------
 
 spawn-at-startup "swayidle" "-w"
-spawn-at-startup "waybar"
+spawn-at-startup "waybar" "-c" "~/.config/waybar/niri-config.jsonc"
 spawn-at-startup "~/.config/waybar/columns-watcher.sh"
 spawn-at-startup "dunst"
 spawn-at-startup "swaybg" "-m" "fill" "-i" "/usr/share/backgrounds/clown.jpeg"
+spawn-at-startup "nm-applet"
+spawn-at-startup "blueman-applet"
+spawn-at-startup "fcitx5" "-dr"
 
 // ----------------------------------------------------------------------------
 // Input devices (mouse, trackpad, keyboard, etc.)
