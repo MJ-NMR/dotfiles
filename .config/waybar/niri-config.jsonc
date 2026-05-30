@@ -225,7 +225,7 @@
 		}
 	},
 	"custom/niri-columns": {
-		"exec": "~/.config/waybar/columns.sh",
+		"exec": "~/.config/waybar/niri-columns.sh",
 		"exec-on-event": true,
 		"signal": 8,
 		"interval": "once",

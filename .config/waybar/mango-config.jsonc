@@ -18,7 +18,7 @@
 	],
 	"modules-right": [
 		"mpris",
-		// "custom/niri-columns",
+		"custom/mango-columns",
 		"pulseaudio",
 		"cpu",
 		"backlight",
@@ -226,8 +226,8 @@
 			"hibernate": "systemctl hibernate"
 		}
 	},
-	"custom/niri-columns": {
-		"exec": "~/.config/waybar/columns.sh",
+	"custom/mango-columns": {
+		"exec": "~/.config/waybar/mango-columns.sh",
 		"exec-on-event": true,
 		"signal": 8,
 		"interval": "once",
