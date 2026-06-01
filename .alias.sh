@@ -22,5 +22,5 @@ alias open='xdg-open'
 alias img='nsxiv'
 alias mic='audiosource'
 alias tirm="sed -z 's/^[[:space:]]*//;s/[[:space:]]*$//'"
-alias lgit="lazygit"
+alias lg="lazygit"
 alias yac="PAC_PACMAN='yay' pac"

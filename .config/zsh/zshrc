@@ -15,9 +15,9 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
 	unfunction kitty-integration
 fi
 
-if test -z "$WIFITUI_THEME"; then
-	source ~/.profile
-fi
+# if test -z "$WIFITUI_THEME"; then
+	# source ~/.profile
+# fi
 
 source ~/.config/zsh/funcs.zsh
 source ~/.config/zsh/opt.zsh

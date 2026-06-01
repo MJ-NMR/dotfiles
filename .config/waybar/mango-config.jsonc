@@ -7,14 +7,12 @@
 	"spacing": 4, // Gaps between modules (4px)
 	// Choose the order of the modules
 	"modules-left": [
-        "ext/workspaces",
-        "dwl/window"
-		// "niri/workspaces",
-		// "niri/window"
+		"ext/workspaces",
+		"dwl/window"
 	],
 	"modules-center": [
-		"clock",
-		"custom/media"
+		"custom/notification",
+		"clock"
 	],
 	"modules-right": [
 		"mpris",
@@ -227,7 +225,7 @@
 		}
 	},
 	"custom/mango-columns": {
-		"exec": "~/.config/waybar/mango-columns.sh",
+		"exec": "~/projects/scripts/mango-columns.sh",
 		"exec-on-event": true,
 		"signal": 8,
 		"interval": "once",
@@ -236,5 +234,22 @@
 		"format": "{}",
 		"tooltip": true,
 		"escape": false
+	},
+	"custom/notification": {
+		"tooltip": false,
+		"format": "{icon}",
+		"format-icons": {
+			"notification": "<span foreground='red'><sup></sup></span>",
+			"none": "",
+			"dnd-notification": "<span foreground='red'><sup></sup></span>",
+			"dnd-none": " "
+		},
+		"return-type": "json",
+		"exec-if": "which dunstctl",
+		"exec": "~/projects/scripts/dunst-status.sh",
+		"interval": 2,
+		"on-click": "dunstctl set-paused toggle",
+		"on-click-right": "~/projects/scripts/rofi-dunst-manager.sh",
+		"escape": true
 	}
 }

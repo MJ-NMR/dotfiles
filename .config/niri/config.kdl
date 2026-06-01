@@ -177,7 +177,6 @@ binds {
 	// tools
     Mod+C hotkey-overlay-title="Copy with notify" { spawn "bash" "-c" "/home/zaater/projects/scripts/cliphist.sh copy"; }
     Mod+P hotkey-overlay-title="Select from the clipboard" { spawn "/home/zaater/projects/scripts/cliphist.sh" "sel"; }
-    Mod+B hotkey-overlay-title="Select from the clipboard" { spawn "/home/zaater/projects/scripts/scr"; }
     Print hotkey-overlay-title="Screenshot: Interactive" { spawn "flameshot" "gui"; }
 	Mod+N hotkey-overlay-title="Notifications manager" { spawn "/home/zaater/projects/scripts/rofi-dunst-manager.sh"; }
 

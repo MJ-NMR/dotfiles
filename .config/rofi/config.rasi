@@ -6,7 +6,8 @@ configuration {
 
 * {
     /* Dracula theme colour palette */
-    drac-bgd: #282a36;
+    drac-bgd: #000000;
+    // drac-bgd: #282a36;
     drac-cur: #44475a;
     drac-fgd: #f8f8f2;
     drac-cmt: #6272a4;
@@ -18,7 +19,8 @@ configuration {
     drac-red: #ff5555;
     drac-yel: #f1fa8c;
 
-    font: "Fredoka Condensed, Medium Condensed 14";
+    // font: "Fredoka Condensed, Medium Condensed 14";
+    font: "JetBrainsMono Blod 13";
 
     foreground: @drac-fgd;
     background-color: @drac-bgd;
@@ -35,8 +37,8 @@ configuration {
 
 #window {
     background-color: @background-color;
-    border:           3;
-    border-radius:    6;
+    border:           1;
+    border-radius:    0;
     border-color:     @bordercolor;
     padding:          15;
 }
