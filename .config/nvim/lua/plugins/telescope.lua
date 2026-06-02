@@ -19,15 +19,17 @@ return {
 					},
 					mappings = {
 						i = {
-							["Tab"] = actions.move_selection_next,
-							["<S-Tab>"] = actions.move_selection_previous,
+							["<Tab>"] = 'move_selection_next',
+							["<S-Tab>"] = 'move_selection_previous',
+							["<M-j>"] = 'preview_scrolling_down',
+							["<M-k>"] = 'preview_scrolling_up',
 						},
 						n = {
-							["q"] = actions.close,
-							["j"] = actions.move_selection_next,
-							["k"] = actions.move_selection_previous,
-							["h"] = actions.select_default,
-							["l"] = actions.close,
+							["q"] = 'close',
+							["j"] = 'move_selection_next',
+							["k"] = 'move_selection_previous',
+							["h"] = 'select_default',
+							["l"] = 'close',
 						},
 					},
 					file_ignore_patterns = {
