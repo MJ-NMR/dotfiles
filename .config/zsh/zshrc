@@ -8,6 +8,17 @@ FAST_HIGHLIGHT_STYLES[builtin]='fg=green,bold'
 FAST_HIGHLIGHT_STYLES[function]='fg=yellow,bold'
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
+# OSC-7: report current working directory to foot
+function chpwd() {
+	printf '\e]7;file://%s%s\e\\' "$HOST" "$PWD"
+}
+chpwd
+
+# OSC-133: mark prompts for foot's prompt navigation
+precmd() {
+	print -Pn "\e]133;A\e\\"
+}
+
 if test -n "$KITTY_INSTALLATION_DIR"; then
 	export KITTY_SHELL_INTEGRATION="enabled"
 	autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
