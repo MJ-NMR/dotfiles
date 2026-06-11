@@ -1,4 +1,4 @@
-set $scripts ~/projects/repos/scripts
+set $scripts ~/projects/scripts
 include ~/.config/i3/keymaps
 include ~/.config/i3/workspaces
 

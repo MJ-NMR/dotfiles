@@ -48,7 +48,8 @@ vim.lsp.config('lua_ls', {
 			workspace = {
 				checkThirdParty = false,
 				library = {
-					vim.env.VIMRUNTIME
+					vim.env.VIMRUNTIME,
+					'/usr/share/hypr/stubs/hl.meta.lua'
 					-- Depending on the usage, you might want to add additional paths
 					-- here.
 					-- '${3rd}/luv/library'

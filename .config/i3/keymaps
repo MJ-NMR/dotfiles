@@ -33,7 +33,7 @@ bindsym $mod+e layout toggle split
 bindsym Shift+space floating toggle
 bindsym $mod+Shift+n exec $scripts/notes.sh
 bindsym $mod+n exec alacritty --class float-term -e wifitui
-bindsym $mod+space exec rofi -show drun -theme ~/.config/rofi/dracula.rasi -matching fuzzy
+bindsym $mod+space exec rofi -show drun -matching fuzzy
 bindsym $mod+g exec  rofi -show run
 bindsym $mod+a focus parent
 bindsym $mod+d focus child
@@ -50,7 +50,7 @@ bindsym XF86AudioRaiseVolume exec  pactl set-sink-volume @DEFAULT_SINK@ +10% && 
 bindsym XF86AudioLowerVolume exec  pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec  pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec  pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-# bindsym --release XF86PowerOff exec $scripts/power-menu.sh 
+bindsym --release XF86PowerOff exec $scripts/power-menu.sh 
 
 
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
