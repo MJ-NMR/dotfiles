@@ -23,4 +23,5 @@ alias img='nsxiv'
 alias mic='audiosource'
 alias tirm="sed -z 's/^[[:space:]]*//;s/[[:space:]]*$//'"
 alias lg="lazygit"
+alias g="lazygit"
 alias yac="PAC_PACMAN='yay' pac"

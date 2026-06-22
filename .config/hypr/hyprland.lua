@@ -28,7 +28,7 @@ hl.monitor({
 ---------------------
 
 -- Set programs that you use
-local terminal    = "foot"
+local terminal    = "kitty"
 local fileManager = "foot yazi"
 local menu        = "rofi -show drun"
 local scripts     = "~/projects/scripts/"
@@ -60,7 +60,7 @@ end)
 -- hl.env("XCURSOR_SIZE", "24")
 -- hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("XCURSOR_THEME", "LyraQ-cursors")
-hl.env("TERMINAL", "foot")
+hl.env("TERMINAL", terminal)
 hl.env("GDK_SCALE", "1")
 hl.env("GDK_DPI_SCALE", "1")
 hl.env("EDITOR", "nvim")
