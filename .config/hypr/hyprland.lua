@@ -48,7 +48,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("swaybg -m fill -i ~/media/pictures/backgrounds/clown.jpeg & waybar -c ~/.config/waybar/hypr.jsonc")
 	hl.exec_cmd("nm-applet & blueman-applet)")
 	hl.exec_cmd("dunst & fcitx5 -dr & wl-paste --type text --watch cliphist store")
-	hl.exec_cmd("swayidle -w timeout 300 'swaylock -f' before-sleep 'swaylock -f'")
+	hl.exec_cmd("swayidle -w timeout 300 'swaylock -f -c 000000' before-sleep 'swaylock -f -c 000000'")
 end)
 
 -------------------------------
@@ -177,7 +177,7 @@ hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 -- "Smart gaps" / "No gaps when only"
 -- uncomment all if you wish to use that.
--- hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
+hl.workspace_rule({ workspace = "special:magic", gaps_out = 30, gaps_in = 0 })
 -- hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
 -- hl.window_rule({
 --     name  = "no-gaps-wtv1",
@@ -193,25 +193,22 @@ hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" 
 -- })
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
+-- See https://wiki.hypr.land/Configuring/Layouts/Master-Layout/ for more
+-- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
 hl.config({
 	dwindle = {
 		preserve_split = true, -- You probably want this
 	},
-})
-
--- See https://wiki.hypr.land/Configuring/Layouts/Master-Layout/ for more
-hl.config({
 	master = {
 		new_status = "slave",
 	},
-})
-
--- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
-hl.config({
 	scrolling = {
-		fullscreen_on_one_column = true,
+		fullscreen_on_one_column = false,
+		column_width = 1.0,
+		focus_fit_method = 0
 	},
 })
+
 
 ----------------
 ----  MISC  ----
@@ -269,14 +266,40 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
-local closeWindowBind = hl.bind(mainMod .. " + Delete", hl.dsp.window.close())
--- closeWindowBind:set_enabled(false)
+hl.bind(mainMod .. " + Delete", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + E",
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
+hl.bind(mainMod .. " + TAB", function()
+	local layouts = { "scrolling", "master" }
+	local ws      = hl.get_active_workspace()
+	if hl.get_active_special_workspace() then
+		ws = hl.get_active_special_workspace()
+	end
+
+	if not ws then
+		return
+	end
+
+	local next_layout = "scrolling"
+
+
+	if ws.tiled_layout == layouts[1] then
+		next_layout = layouts[2]
+	else
+		next_layout = layouts[1]
+	end
+
+	if ws.special then
+		hl.workspace_rule({ workspace = tostring(ws.name), layout = next_layout })
+	else
+		hl.workspace_rule({ workspace = tostring(ws.id), layout = next_layout, gaps_out = { top = 0, bottom = 0, right = 8, left = 8 }, })
+	end
+end)
+
 -- hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
@@ -290,6 +313,8 @@ hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "left" }))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
+hl.bind(mainMod .. " + S", hl.dsp.window.center({ action = "toggle" }))
+hl.bind(mainMod .. " + G", hl.dsp.window.pin({ action = "toggle" }))
 
 -- apps
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(scripts .. "cliphist.sh sel"))
