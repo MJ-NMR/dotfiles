@@ -20,7 +20,7 @@ configuration {
     drac-yel: #f1fa8c;
 
     // font: "Fredoka Condensed, Medium Condensed 14";
-    font: "JetBrainsMono Bold 12";
+    font: "JetBrainsMono NF ExtraBold 11";
 
     foreground: @drac-fgd;
     background-color: @drac-bgd;

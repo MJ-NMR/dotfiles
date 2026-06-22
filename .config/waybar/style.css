@@ -1,8 +1,7 @@
 * {
 	/* border: 10px; */
-	border-radius: 10px;
-	font-family: JetBrainsMono NF Bold;
-	font-weight: bold;
+	border-radius: 8px;
+	font-family: JetBrainsMono NF ExtraBold;
 	font-size: 12px;
 	min-height: 0;
 }
@@ -14,8 +13,8 @@ window#waybar {
 .modules-left,
 .modules-center,
 .modules-right {
-	margin-top: 6px;
-	margin-bottom: 6px;
+	margin-top: 0px;
+	margin-bottom: 3px;
 }
 #custom-notification,
 #backlight,
@@ -53,8 +52,8 @@ window#waybar {
 #mpris {
 	color: #cdd6f4;
 	border: 2px solid rgba(255, 255, 255, 0.3);
-	border-radius: 8px;
-	padding: 0 10px;
+	/* border-radius: 8px; */
+	/* padding: 0 10px; */
 }
 
 #mpris.paused {
