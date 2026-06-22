@@ -46,7 +46,9 @@ local scripts     = "~/projects/scripts/"
 hl.on("hyprland.start", function()
 	hl.exec_cmd(terminal)
 	hl.exec_cmd("swaybg -m fill -i ~/media/pictures/backgrounds/clown.jpeg & waybar -c ~/.config/waybar/hypr.jsonc")
-	hl.exec_cmd("nm-applet & blueman-applet & dunst & fcitx5 -dr & wl-paste --type text --watch cliphist store")
+	hl.exec_cmd("nm-applet & blueman-applet)")
+	hl.exec_cmd("dunst & fcitx5 -dr & wl-paste --type text --watch cliphist store")
+	hl.exec_cmd("swayidle -w timeout 300 'swaylock -f' before-sleep 'swaylock -f'")
 end)
 
 -------------------------------
@@ -113,6 +115,7 @@ hl.config({
 		allow_tearing    = false,
 
 		layout           = "master",
+
 	},
 
 	decoration = {
@@ -268,7 +271,7 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 local closeWindowBind = hl.bind(mainMod .. " + Delete", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
-hl.bind(mainMod .. " + SHIFT + M",
+hl.bind(mainMod .. " + SHIFT + E",
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
@@ -302,8 +305,8 @@ for i = 1, 10 do
 end
 
 -- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(mainMod .. " + M", hl.dsp.workspace.toggle_special("magic"))
+hl.bind(mainMod .. " + SHIFT + M", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
