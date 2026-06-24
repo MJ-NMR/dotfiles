@@ -31,3 +31,5 @@
 	rebase = true
 [log]
 	date = relative
+[pager]
+	diff = diffnav
