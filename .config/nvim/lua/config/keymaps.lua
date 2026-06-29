@@ -96,7 +96,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				end,
 			})
 		end)
-		vim.keymap.set("n", "<leader>.", vim.lsp.buf.format,
+		vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action,
 			{ desc = "format", noremap = true, silent = true, buffer = bufnr })
 		vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float,
 			{ desc = "diagnostic", noremap = true, silent = true, buffer = bufnr })

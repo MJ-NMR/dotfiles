@@ -1,4 +1,4 @@
-vim.lsp.enable({ "lua_ls", "ts_ls", "bashls", "gopls", "clangd", "pyright", "sqls", "arduino_language_server", "ols" })
+vim.lsp.enable({ "lua_ls", "ts_ls", "bashls", "gopls", "clangd", "pyright", "sqls", "arduino_language_server", "zls" })
 
 local capabilities = require('blink.cmp').get_lsp_capabilities()
 --local capabilities = require('cmp_nvim_lsp').default_capabilities()

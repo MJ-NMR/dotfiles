@@ -16,6 +16,11 @@ window#waybar {
 	margin-top: 0px;
 	margin-bottom: 3px;
 }
+
+.modules-center {
+	padding: 0 5px;
+}
+
 #custom-notification,
 #backlight,
 #pulseaudio,

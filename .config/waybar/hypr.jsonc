@@ -16,7 +16,6 @@
 	],
 	"modules-right": [
 		"mpris",
-		"group/status",
 		"battery",
 		"pulseaudio",
 		"cpu",
