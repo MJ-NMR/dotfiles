@@ -44,15 +44,15 @@ local scripts     = "~/projects/scripts/"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function()
-	hl.exec_cmd(terminal)
 	hl.exec_cmd("swaybg -m fill -i ~/media/pictures/backgrounds/clown.jpeg & waybar -c ~/.config/waybar/hypr.jsonc")
-	hl.exec_cmd("nm-applet & blueman-applet)")
+	hl.exec_cmd("nm-applet & blueman-applet")
 	hl.exec_cmd("dunst & fcitx5 -dr & wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("swayidle -w timeout 300 'swaylock -f -c 000000' before-sleep 'swaylock -f -c 000000'")
 	hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DISPLAY")
-	hl.exec_cmd(scripts .. "hypr-portal.sh")
+	hl.exec_cmd(scripts .. "hypr-poral.sh")
 end)
+
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -188,12 +188,11 @@ hl.workspace_rule({ workspace = "special:magic", gaps_out = 30, gaps_in = 0 })
 --     border_size = 0,
 --     rounding    = 0,
 -- })
--- hl.window_rule({
---     name  = "no-gaps-f1",
---     match = { float = false, workspace = "f[1]" },
---     border_size = 0,
---     rounding    = 0,
--- })
+hl.window_rule({
+	match = { class = "app.drey.Dialect" },
+	float = true,
+	size = { 100, 100 }
+})
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 -- See https://wiki.hypr.land/Configuring/Layouts/Master-Layout/ for more
@@ -265,18 +264,20 @@ hl.device({
 ---- KEYBINDINGS ----
 ---------------------
 
-local mainMod = "SUPER" -- Sets "Windows" key as main modifier
+local Mod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + Delete", hl.dsp.window.close())
-hl.bind(mainMod .. " + SHIFT + E",
+hl.bind(Mod .. " + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(Mod .. " + Delete", hl.dsp.window.close())
+hl.bind(Mod .. " + SHIFT + E",
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
-hl.bind(mainMod .. " + TAB", function()
+hl.bind("XF86PowerOff", hl.dsp.exec_cmd(scripts .. "power-menu.sh"))
+hl.bind(Mod .. " + Y", hl.dsp.exec_cmd(fileManager))
+hl.bind(Mod .. " + R", hl.dsp.window.resize())
+hl.bind(Mod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(Mod .. " + Space", hl.dsp.exec_cmd(menu))
+hl.bind(Mod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
+hl.bind(Mod .. " + TAB", function()
 	local layouts = { "scrolling", "master" }
 	local ws      = hl.get_active_workspace()
 	if hl.get_active_special_workspace() then
@@ -299,50 +300,73 @@ hl.bind(mainMod .. " + TAB", function()
 	if ws.special then
 		hl.workspace_rule({ workspace = tostring(ws.name), layout = next_layout })
 	else
-		hl.workspace_rule({ workspace = tostring(ws.id), layout = next_layout, gaps_out = { top = 0, bottom = 0, right = 8, left = 8 }, })
+		hl.workspace_rule({ workspace = tostring(ws.id), layout = next_layout, gaps_out = { top = 0, bottom = 0, right = 0, left = 0 }, })
 	end
+end)
+
+-- Switch to a submap called `resize`.
+hl.bind(Mod .. " + R", function()
+	hl.exec_cmd("notify-send RESIZE")
+	hl.dispatch(hl.dsp.submap("resize"))
+end)
+
+-- Start a submap called "resize".
+hl.define_submap("resize", function()
+	-- Set repeating binds for resizing the active window.
+	hl.bind("H", hl.dsp.window.resize({ x = 10, y = 0, relative = true }), { repeating = true })
+	hl.bind("L", hl.dsp.window.resize({ x = -10, y = 0, relative = true }), { repeating = true })
+	hl.bind("K", hl.dsp.window.resize({ x = 0, y = 10, relative = true }), { repeating = true })
+	hl.bind("J", hl.dsp.window.resize({ x = 0, y = -10, relative = true }), { repeating = true })
+
+	-- Use `reset` to go back to the global submap
+	hl.bind("escape", hl.dsp.submap("reset"))
+	hl.bind("q", hl.dsp.submap("reset"))
+	hl.bind(Mod .. " + R", hl.dsp.submap("reset"))
 end)
 
 -- hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
 -- Move focus with mainMod + vim keys
-hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
+hl.bind(Mod .. " + H", hl.dsp.focus({ direction = "left" }))
+hl.bind(Mod .. " + L", hl.dsp.focus({ direction = "right" }))
+hl.bind(Mod .. " + K", hl.dsp.focus({ direction = "up" }))
+hl.bind(Mod .. " + J", hl.dsp.focus({ direction = "down" }))
 
-hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "left" }))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
-hl.bind(mainMod .. " + S", hl.dsp.window.center({ action = "toggle" }))
-hl.bind(mainMod .. " + G", hl.dsp.window.pin({ action = "toggle" }))
+hl.bind(Mod .. " + SHIFT + H", hl.dsp.window.move({ direction = "left" }))
+hl.bind(Mod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
+hl.bind(Mod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
+hl.bind(Mod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
+hl.bind(Mod .. " + period", hl.dsp.window.center({ action = "toggle" }))
+hl.bind(Mod .. " + D", hl.dsp.window.cycle_next())
+hl.bind(Mod .. " + G", hl.dsp.window.pin({ action = "toggle" }))
 
 -- apps
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(scripts .. "cliphist.sh sel"))
-hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(scripts .. "cliphist.sh copy"))
+hl.bind(Mod .. " + P", hl.dsp.exec_cmd(scripts .. "cliphist.sh sel"))
+hl.bind(Mod .. " + C", hl.dsp.exec_cmd(scripts .. "cliphist.sh copy"))
 hl.bind(" Print ", hl.dsp.exec_cmd("flameshot gui"))
+hl.bind(Mod .. " + T", hl.dsp.exec_cmd("dialect -n"))
+hl.bind(Mod .. " + S", hl.dsp.exec_cmd('spd-say "$(wl-paste --primary)"'))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
 	local key = i % 10 -- 10 maps to key 0
-	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+	hl.bind(Mod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+	hl.bind(Mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
 -- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + M", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + M", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(Mod .. " + M", hl.dsp.workspace.toggle_special("magic"))
+hl.bind(Mod .. " + SHIFT + M", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(Mod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(Mod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
-hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+hl.bind(Mod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(Mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
@@ -396,6 +420,10 @@ hl.window_rule({
 	no_focus = true,
 })
 
+hl.window_rule({
+	match = { class = "zenity" },
+	float = true,
+})
 -- Layer rules also return a handle.
 -- local overlayLayerRule = hl.layer_rule({
 --     name  = "no-anim-overlay",
