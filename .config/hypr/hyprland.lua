@@ -45,8 +45,7 @@ local scripts     = "~/projects/scripts/"
 --
 hl.on("hyprland.start", function()
 	hl.exec_cmd("swaybg -m fill -i ~/media/pictures/backgrounds/clown.jpeg & waybar -c ~/.config/waybar/hypr.jsonc")
-	hl.exec_cmd("nm-applet & blueman-applet")
-	hl.exec_cmd("dunst & fcitx5 -dr & wl-paste --type text --watch cliphist store")
+	hl.exec_cmd("nm-applet &dunst & fcitx5 -dr & wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("swayidle -w timeout 300 'swaylock -f -c 000000' before-sleep 'swaylock -f -c 000000'")
 	hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DISPLAY")
