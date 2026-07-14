@@ -28,7 +28,7 @@ hl.monitor({
 ---------------------
 
 -- Set programs that you use
-local terminal    = "kitty"
+local terminal    = "foot"
 local fileManager = "foot yazi"
 local menu        = "rofi -show drun"
 local scripts     = "~/projects/scripts/"
