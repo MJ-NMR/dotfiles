@@ -438,7 +438,8 @@ c.tabs.padding = padding
 c.tabs.indicator.width = 1
 c.tabs.favicons.scale = 1
 
-config.bind('pw', 'spawn --userscript qute-keepassxc --insecure', mode='normal')
+# config.bind('pw', 'spawn --userscript qute-keepassxc --insecure', mode='normal')
+config.bind('pw', 'spawn --userscript qute-pass-form --no-insert-mode')
 config.bind(";v", "hint links spawn mpv {hint-url}", mode='normal')
 config.bind("<", "back", mode='normal')
 config.bind(">", "back", mode='normal')

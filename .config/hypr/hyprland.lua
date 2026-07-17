@@ -72,6 +72,7 @@ hl.env("XDG_DATA_HOME", "/home/zaater/.local/share")
 hl.env("XDG_CONFIG_HOME", "/home/zaater/.config")
 hl.env("XDG_STATE_HOME", "/home/zaater/.local/state")
 hl.env("GOPATH", "/home/zaater/.local/go")
+hl.env("PATH", os.getenv("PATH") .. ":" .. os.getenv("GOPATH") .. "/bin")
 
 
 -----------------------
