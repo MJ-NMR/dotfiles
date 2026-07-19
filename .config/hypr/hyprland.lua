@@ -50,6 +50,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DISPLAY")
 	hl.exec_cmd(scripts .. "hypr-poral.sh")
+	hl.exec_cmd("xfce4-power-manager")
 end)
 
 
