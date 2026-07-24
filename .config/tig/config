@@ -1,0 +1,10 @@
+# Use delta for diff rendering
+ # set diff-options = -m --first-parent
+set diff-options = --color=always
+
+# Pipe diffs through delta
+bind diff i !git show %(commit)
+bind main i !git show %(commit)
+
+set show-notes = yes
+set main-view-date = relative

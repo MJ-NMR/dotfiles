@@ -32,4 +32,4 @@ let &t_EI = "\e[2 q"
 packadd! dracula
 syntax enable
 colorscheme dracula
-highlight Normal ctermbg=none guibg=NONE
+highlight Normal ctermbg=black guibg=black
