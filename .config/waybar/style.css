@@ -30,8 +30,9 @@ window#waybar {
 #clock,
 #network,
 #bluetooth,
-#cpu,
-#memory,
+/* #cpu, */
+/* #memory, */
+#hardware,
 #battery,
 #tray {
 	background: rgba(30, 30, 40, 0.85);
@@ -63,4 +64,17 @@ window#waybar {
 
 #mpris.paused {
 	color: #6c7086;
+}
+
+.module-group {
+    background: rgba(30, 30, 40, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0 5px;
+}
+
+.module-group #cpu,
+.module-group #memory {
+    background: transparent;
+    border: none;
+    padding: 0 5px;
 }

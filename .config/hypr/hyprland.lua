@@ -44,13 +44,15 @@ local scripts     = "~/projects/scripts/"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function()
+	hl.exec_cmd(scripts .. "hypr-poral.sh")
 	hl.exec_cmd("swaybg -m fill -i ~/media/pictures/backgrounds/clown.jpeg & waybar -c ~/.config/waybar/hypr.jsonc")
 	hl.exec_cmd("nm-applet &dunst & fcitx5 -dr & wl-paste --type text --watch cliphist store")
-	hl.exec_cmd("swayidle -w timeout 300 'swaylock -f -c 000000' before-sleep 'swaylock -f -c 000000'")
+	-- hl.exec_cmd("swayidle -w timeout 300 'swaylock -f -c 000000' before-sleep 'swaylock -f -c 000000'")
 	hl.exec_cmd("systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP DISPLAY")
-	hl.exec_cmd(scripts .. "hypr-poral.sh")
-	hl.exec_cmd("xfce4-power-manager")
+	hl.exec_cmd(
+	"swayidle -w timeout 100 'brightnessctl set 10%' resume 'brightnessctl set 100%' timeout 150 'loginctl lock-session' timeout 330 'hyprctl dispatch 'hl.dsp.dpms({ action = \"disable\" })'' resume 'hyprctl dispatch 'hl.dsp.dpms({ action = \"enable\" })'' timeout 600 'systemctl suspend' before-sleep 'loginctl lock-session' lock 'swaylock -f -c 000000'")
+	-- hl.exec_cmd("xfce4-power-manager")
 end)
 
 
