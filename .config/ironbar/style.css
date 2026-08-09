@@ -1,0 +1,233 @@
+@define-color bkg      rgba(30, 30, 40, 0.90);
+/* @define-color mantle   #181825; */
+/* @define-color crust    #11111b; */
+/* @define-color surface0 #313244; */
+/* @define-color surface1 #45475a; */
+/* @define-color overlay0 #6c7086; */
+/* @define-color text     #cdd6f4; */
+/* @define-color subtext0 #a6adc8; */
+/* @define-color blue     #89b4fa; */
+/* @define-color mauve    #cba6f7; */
+/* @define-color red      #f38ba8; */
+/* @define-color green    #a6e3a1; */
+/* @define-color yellow   #f9e2af; */
+/* @define-color peach    #fab387; */
+:root {
+    --color-dark-primary: #1c1c1c;
+    --color-dark-secondary: #2d2d2d;
+    --color-white: #fff;
+    --color-active: #6699cc;
+    --color-urgent: #8f0a0a;
+
+    --margin-lg: 1em;
+    --margin-sm: 0.7em;
+}
+
+/* Global Reset */
+* {
+    border-radius: 8px;
+    border: none;
+    box-shadow: none;
+    background-image: none;
+    font-family: "JetBrainsMono NF ExtraBold", monospace;
+    font-size: 12px;
+    min-height: 0;
+}
+
+.background {
+    background-color:  transparent;
+}
+
+
+/* window#ironbar { */
+/*     background-color:  @bkg; */
+/* } */
+
+
+#start > *, #center > *, #end > * {
+    margin: 0 0px;
+    margin-left: 0.4em;
+    padding: 0 2px;
+    background: @bkg;
+}
+
+
+/* Base interactive elements (GTK Popups, Sliders, Switches) */
+scale > trough {
+    /* background-color: bkg; */
+}
+
+scale > trough > highlight {
+    /* background-color: var(--color-active); */
+    border-style: solid;
+    /* border-color: var(--color-active); */
+    border-width: 0.0em;
+}
+
+scale > trough > slider,
+switch > slider {
+    /* background-color: var(--color-white); */
+}
+
+switch:checked {
+    /* background-color: var(--color-active); */
+}
+
+switch:not(:checked) {
+    /* background-color: var(--color-dark-secondary); */
+}
+
+popover, 
+popover contents, 
+calendar, 
+popover .view {
+    /* background-color: var(--color-dark-primary); */
+}
+
+box, button, label {
+    /* background-color: transparent; */
+    color: var(--color-white);
+}
+
+
+button {
+    background-color: transparent;
+    padding-left: var(--margin-sm);
+    padding-right: var(--margin-sm);
+}
+
+button:hover, 
+button:active, 
+*:selected {
+    background-color: #6c7086;
+}
+
+/* Container Spacing */
+.left,
+.center,
+.right {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.center {
+    padding: 0 5px;
+}
+
+/* .right > * + * { */
+/*     margin-left: var(--margin-lg); */
+/* } */
+
+/* Workspaces */
+.workspaces {
+	padding-left: 0px;
+}
+
+.workspaces .item {
+    border-radius: 8px;
+    /* padding: 0 6px; */
+}
+
+.workspaces .item.visible {
+    box-shadow: inset 0 -1px var(--color-white);
+}
+
+.workspaces .item.focused {
+    background-color: #6c7086;
+    color: #000;
+    /* box-shadow: inset 0 -1px var(--color-active); */
+}
+
+.workspaces .item.urgent {
+    /* background-color: var(--color-urgent); */
+}
+
+/* MPRIS / Media Player */
+#mpris {
+    color: #cdd6f4;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+#mpris.paused {
+    color: #6c7086;
+}
+
+/* Sysinfo / Hardware Module Group */
+.module-group {
+    /* background-color: rgba(30, 30, 40, 0.85); */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0 5px;
+}
+
+.module-group > * + * {
+    margin-left: var(--margin-sm);
+}
+
+.module-group #cpu,
+.module-group #memory {
+    /* background: transparent; */
+    border: none;
+    padding: 0 5px;
+}
+
+/* Calendar & Clock Popup Styles */
+.clock {
+    font-weight: bold;
+}
+
+.popup-clock .calendar-clock {
+    font-size: 2.0em;
+}
+
+.popup-clock .calendar .today {
+    /* background-color: var(--color-active); */
+}
+/* Flatten native GTK child widgets inside some Ironbar modules */
+.volume > *,
+.volume button,
+.volume > * > *,
+.volume button > *,
+.network-manager > *,
+.network-manager button,
+.network-manager > * > *,
+.network-manager button > *,
+/* .battery > *, */
+.battery button,
+/* .battery > * > *, */
+.battery button > *,
+.tray > *,
+.tray button,
+.tray > * > *,
+.tray button > *,
+.notifications > *,
+.notifications button,
+.notifications > * > *,
+.notifications button > *,
+.mod-pulseaudio > *,
+.mod-pulseaudio button,
+.mod-pulseaudio > * > *,
+.mod-pulseaudio button > *,
+.mod-network > *,
+.mod-network button,
+.mod-network > * > *,
+.mod-network button > *,
+.mod-battery > *,
+.mod-battery button,
+.mod-battery > * > *,
+.mod-battery button > *,
+.mod-tray > *,
+.mod-tray button,
+.mod-tray > * > *,
+.mod-tray button > *,
+.mod-custom-swaync > *,
+.mod-custom-swaync button,
+.mod-custom-swaync > * > *,
+.mod-custom-swaync button > * {
+    /* background-color: rgba(30, 30, 40, 0.85); */
+    /* background-image: none; */
+    /* border: none; */
+    /* box-shadow: none; */
+    /* outline: none; */
+    /* -gtk-icon-shadow: none; */
+}
+

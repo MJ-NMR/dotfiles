@@ -1,0 +1,648 @@
+{
+  "layout": {
+    "default_profile": {
+      "left_sidebar": "Full",
+      "right_sidebar": "Visible"
+    },
+    "narrow_enabled": true,
+    "narrow_threshold": 1300,
+    "narrow_profile": {
+      "left_sidebar": "Compact",
+      "right_sidebar": "Visible"
+    },
+    "preferred_left_sidebar_width": 230,
+    "preferred_right_sidebar_width": 300
+  },
+  "sidebar": {
+    "route_items": [
+      {
+        "item": "Home",
+        "visible": true
+      },
+      {
+        "item": "Search",
+        "visible": false
+      },
+      {
+        "item": "Favorites",
+        "visible": true
+      },
+      {
+        "item": "Albums",
+        "visible": true
+      },
+      {
+        "item": "Tracks",
+        "visible": true
+      },
+      {
+        "item": "Artists",
+        "visible": true
+      },
+      {
+        "item": "AlbumArtists",
+        "visible": true
+      },
+      {
+        "item": "Genres",
+        "visible": true
+      },
+      {
+        "item": "Moods",
+        "visible": false
+      },
+      {
+        "item": "History",
+        "visible": true
+      },
+      {
+        "item": "Folders",
+        "visible": true
+      },
+      {
+        "item": "Playlists",
+        "visible": true
+      },
+      {
+        "item": "SmartPlaylists",
+        "visible": true
+      }
+    ],
+    "pins_visible": true,
+    "server_visible": true
+  },
+  "context_menu": {
+    "items": [
+      {
+        "item": "Play",
+        "visible": true
+      },
+      {
+        "item": "PlayNext",
+        "visible": true
+      },
+      {
+        "item": "PlayLater",
+        "visible": true
+      },
+      {
+        "item": "PlayRadio",
+        "visible": true
+      },
+      {
+        "item": "AddToPlaylist",
+        "visible": true
+      },
+      {
+        "item": "Favorites",
+        "visible": true
+      },
+      {
+        "item": "Pins",
+        "visible": true
+      },
+      {
+        "item": "GoToArtist",
+        "visible": true
+      },
+      {
+        "item": "GoToAlbum",
+        "visible": true
+      },
+      {
+        "item": "Download",
+        "visible": true
+      }
+    ]
+  },
+  "theme_preference": "System",
+  "language": "system",
+  "private_mode": false,
+  "notifications_enabled": false,
+  "control_notifications_enabled": true,
+  "release_notifications_enabled": true,
+  "release_notification_seen_version": "0.12.5",
+  "secret_storage_mode": "system-keyring",
+  "external_lyrics_enabled": true,
+  "external_lyrics_providers": [
+    "lrclib",
+    "netease"
+  ],
+  "prefer_server_lyrics": true,
+  "lyrics_provider_settings_version": 1,
+  "suppressed_auto_lyrics_track_ids": [],
+  "prefer_translations": false,
+  "preferred_translation_language": "en",
+  "show_furigana": false,
+  "show_romanization": false,
+  "word_by_word_highlighting": true,
+  "external_metadata_enabled": true,
+  "external_site_links": {
+    "enabled": true,
+    "lastfm": true,
+    "musicbrainz": true,
+    "server": true
+  },
+  "prefer_server_playlist_covers": false,
+  "show_downloaded_badges": true,
+  "seekbar_waveform_enabled": true,
+  "tray_enabled": false,
+  "exit_to_tray": false,
+  "start_minimized": false,
+  "type_to_search_enabled": true,
+  "discord_presence_enabled": false,
+  "discord_client_id": "1505345384686419979",
+  "discord_display_type": "application",
+  "discord_link_type": "musicbrainz",
+  "discord_show_paused": false,
+  "discord_show_as_listening": true,
+  "discord_show_state_icon": true,
+  "lastfm_api_key": "",
+  "auto_dj_enabled": false,
+  "shuffle_enabled": false,
+  "repeat_mode": "Off",
+  "auto_dj_refill_threshold": 1,
+  "playback": {
+    "transition_mode": "Default",
+    "crossfade_seconds": 5,
+    "skip_same_album_crossfade": false,
+    "audio_fade_on_status_change": true,
+    "replay_gain": "Off",
+    "stream_quality": "Original",
+    "equalizer": {
+      "enabled": false,
+      "selected_preset": "Flat",
+      "bands": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "volume": 1.0,
+    "muted": false
+  },
+  "home_blocks": [
+    "Showcase",
+    "Explore",
+    "MostPlayed",
+    "NewlyAdded",
+    "RecentlyPlayed",
+    "RecentlyReleased",
+    "Genres"
+  ],
+  "lyrics_panel_visible": true,
+  "queue_lyrics_height": 300,
+  "library_lists": [
+    {
+      "key": "Albums",
+      "settings": {
+        "layout": "Grid",
+        "row_fields": [
+          "TitleMerged",
+          "PlayCount",
+          "Year",
+          "Favorite"
+        ],
+        "grid_fields": [
+          "AlbumArtist",
+          "Year"
+        ],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "Title",
+        "descending": false,
+        "layout_version": 8
+      }
+    },
+    {
+      "key": "Artists",
+      "settings": {
+        "layout": "Grid",
+        "row_fields": [
+          "Image",
+          "Title",
+          "AlbumCount",
+          "Favorite"
+        ],
+        "grid_fields": [],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "Title",
+        "descending": false,
+        "layout_version": 8
+      }
+    },
+    {
+      "key": "AlbumArtists",
+      "settings": {
+        "layout": "Grid",
+        "row_fields": [
+          "Image",
+          "Title",
+          "AlbumCount",
+          "Favorite"
+        ],
+        "grid_fields": [],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "Title",
+        "descending": false,
+        "layout_version": 8
+      }
+    },
+    {
+      "key": "Tracks",
+      "settings": {
+        "layout": "Row",
+        "row_fields": [
+          "RowIndex",
+          "TitleMerged",
+          "Album",
+          "Year",
+          "Favorite"
+        ],
+        "grid_fields": [
+          "Artist",
+          "Album",
+          "Duration"
+        ],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "Title",
+        "descending": false,
+        "layout_version": 8
+      }
+    },
+    {
+      "key": "FavoriteTracks",
+      "settings": {
+        "layout": "Row",
+        "row_fields": [
+          "RowIndex",
+          "TitleMerged",
+          "Album",
+          "Year",
+          "PlayCount"
+        ],
+        "grid_fields": [
+          "Artist",
+          "Album",
+          "Duration"
+        ],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "Title",
+        "descending": false,
+        "layout_version": 8
+      }
+    },
+    {
+      "key": "History",
+      "settings": {
+        "layout": "Row",
+        "row_fields": [
+          "RowIndex",
+          "TitleMerged",
+          "Album",
+          "Duration",
+          "Favorite"
+        ],
+        "grid_fields": [
+          "Artist",
+          "Album",
+          "Duration"
+        ],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "RowIndex",
+        "descending": false,
+        "layout_version": 8
+      }
+    },
+    {
+      "key": "Genres",
+      "settings": {
+        "layout": "Grid",
+        "row_fields": [
+          "Title",
+          "AlbumCount",
+          "SongCount"
+        ],
+        "grid_fields": [],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "Title",
+        "descending": false,
+        "layout_version": 8
+      }
+    },
+    {
+      "key": "Moods",
+      "settings": {
+        "layout": "Grid",
+        "row_fields": [
+          "Title",
+          "SongCount",
+          "Duration"
+        ],
+        "grid_fields": [
+          "SongCount",
+          "Duration"
+        ],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "Title",
+        "descending": false,
+        "layout_version": 8
+      }
+    },
+    {
+      "key": "Playlists",
+      "settings": {
+        "layout": "Grid",
+        "row_fields": [
+          "Image",
+          "Title",
+          "SongCount"
+        ],
+        "grid_fields": [
+          "SongCount"
+        ],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "Title",
+        "descending": false,
+        "layout_version": 8
+      }
+    },
+    {
+      "key": "SmartPlaylists",
+      "settings": {
+        "layout": "Grid",
+        "row_fields": [
+          "Image",
+          "Title",
+          "SongCount",
+          "Duration"
+        ],
+        "grid_fields": [
+          "SongCount",
+          "Duration"
+        ],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "RowIndex",
+        "descending": false,
+        "layout_version": 8
+      }
+    },
+    {
+      "key": "AlbumDetailTracks",
+      "settings": {
+        "layout": "Row",
+        "row_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "grid_fields": [
+          "Artist",
+          "Album",
+          "Duration"
+        ],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "TrackNumber",
+        "descending": false,
+        "layout_version": 8
+      }
+    },
+    {
+      "key": "ArtistAlbums",
+      "settings": {
+        "layout": "Grid",
+        "row_fields": [
+          "TitleMerged",
+          "PlayCount",
+          "Year",
+          "Favorite"
+        ],
+        "grid_fields": [
+          "AlbumArtist",
+          "Year"
+        ],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "Title",
+        "descending": false,
+        "layout_version": 8
+      }
+    },
+    {
+      "key": "ArtistTracks",
+      "settings": {
+        "layout": "Row",
+        "row_fields": [
+          "RowIndex",
+          "TitleMerged",
+          "Album",
+          "Year",
+          "PlayCount"
+        ],
+        "grid_fields": [
+          "Artist",
+          "Album",
+          "Duration"
+        ],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "TrackNumber",
+        "descending": false,
+        "layout_version": 8
+      }
+    },
+    {
+      "key": "GenreTracks",
+      "settings": {
+        "layout": "Row",
+        "row_fields": [
+          "RowIndex",
+          "TitleMerged",
+          "Album",
+          "Duration",
+          "Favorite"
+        ],
+        "grid_fields": [
+          "Artist",
+          "Album",
+          "Duration"
+        ],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "TrackNumber",
+        "descending": false,
+        "layout_version": 8
+      }
+    },
+    {
+      "key": "MoodTracks",
+      "settings": {
+        "layout": "Row",
+        "row_fields": [
+          "RowIndex",
+          "TitleMerged",
+          "Album",
+          "Duration",
+          "Favorite"
+        ],
+        "grid_fields": [
+          "Artist",
+          "Album",
+          "Duration"
+        ],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "TrackNumber",
+        "descending": false,
+        "layout_version": 8
+      }
+    },
+    {
+      "key": "PlaylistTracks",
+      "settings": {
+        "layout": "Row",
+        "row_fields": [
+          "RowIndex",
+          "TitleMerged",
+          "Album",
+          "Duration",
+          "Favorite"
+        ],
+        "grid_fields": [
+          "Artist",
+          "Album",
+          "Duration"
+        ],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "RowIndex",
+        "descending": false,
+        "layout_version": 8
+      }
+    },
+    {
+      "key": "SmartPlaylistTracks",
+      "settings": {
+        "layout": "Row",
+        "row_fields": [
+          "RowIndex",
+          "TitleMerged",
+          "Album",
+          "PlayCount"
+        ],
+        "grid_fields": [
+          "Artist",
+          "Album",
+          "Duration"
+        ],
+        "detail_track_fields": [
+          "RowIndex",
+          "Title",
+          "Duration"
+        ],
+        "sort_key": "TrackNumber",
+        "descending": false,
+        "layout_version": 8
+      }
+    }
+  ],
+  "scrobbling": {
+    "lastfm": {
+      "enabled": false,
+      "username": "",
+      "api_secret": "",
+      "session_key": "",
+      "now_playing_enabled": true
+    },
+    "librefm": {
+      "enabled": false,
+      "username": "",
+      "api_key": "rufin",
+      "api_secret": "rufin",
+      "session_key": "",
+      "now_playing_enabled": true
+    },
+    "listenbrainz": {
+      "enabled": false,
+      "user_token": "",
+      "now_playing_enabled": true
+    }
+  },
+  "sources": {
+    "configured": [
+      {
+        "source_id": "local:server:library",
+        "kind": "local",
+        "name": "Local",
+        "provider_payload": "{\"roots\":[\"/home/zaater/media/music\"],\"version\":1}"
+      }
+    ],
+    "selected_source_id": "local:server:library"
+  },
+  "jellyfin_device_id": "rufin-12df0b1390200d4c71196a9bd893a46a"
+}

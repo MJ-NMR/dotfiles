@@ -1,0 +1,60 @@
+# icon_theme: Paper
+position: top
+height: 20
+spacing: 0,
+start:
+- type: "workspaces"
+- type: focused
+  show_icon: false
+  icon_size: 16
+  truncate:
+    mode: end
+    max_length: 30
+
+center:
+- type: clock
+  format: '%I:%M<span foreground="#666666">-</span>%a %m/%d'
+
+end:
+- type: music
+  player_type: "mpris"
+  format: "{title}"
+  truncate:
+    mode: end
+    max_length: 20
+  icons:
+    play: ""
+    pause: ""
+
+- type: battery
+  show_if: |
+    ls /sys/class/power_supply/ | grep --quiet '^BAT'
+
+- type: volume
+  format: '{icon} {percentage}%'
+  show_sources: false
+  sink_slider_orientation: vertical
+  max_volume: 100
+  truncate: end
+  truncate_popup: end
+  icons:
+    volume: 󰕾
+    muted: 󰝟
+  profiles:
+    medium:
+      when: 66.66
+      icons:
+        volume: 󰖀
+    low:
+      when: 33.33
+      icons:
+        volume: 󰕿
+
+- type: sys_info
+  format:
+  - '{cpu_percent}% '
+  - '{memory_percent}%   '
+  interval:
+    cpu: 1
+
+- type: tray
